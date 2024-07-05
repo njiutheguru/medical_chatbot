@@ -4,7 +4,6 @@ import markdown
 app = Flask(__name__)
 
 # Simulated chatbot function
-OPENAI_API_KEY ="sk-proj-BuVbw1GltfxFI7gbB2wpT3BlbkFJyr1lnzzGNqDs05BJHdsi"
 from openai import OpenAI
 client = OpenAI(api_key= OPENAI_API_KEY)
 assistant = client.beta.assistants.create(
