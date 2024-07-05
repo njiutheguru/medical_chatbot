@@ -26,7 +26,7 @@ def get_ai_response(prompt):
   run = client.beta.threads.runs.create_and_poll(
     thread_id=thread.id,
     assistant_id=assistant.id,
-    instructions="Only answer questions about 'health','medicine', or 'mental health', else  you must return 'I am sorry I don't know about that.I only deal with medicine and health issues. Please contact the customer care for more direction'.BE BRIEF."
+    instructions="Only answer questions about 'health', 'medicine', or 'mental health', else  you must return 'I am sorry I don't know about that.I only deal with medicine and health issues. Please contact the customer care for more direction'.BE BRIEF."
   )
   if run.status == 'completed': 
     messages = client.beta.threads.messages.list(
