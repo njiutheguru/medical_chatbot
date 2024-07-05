@@ -14,8 +14,6 @@ assistant = client.beta.assistants.create(
     model="gpt-4o")
 
 thread = client.beta.threads.create()
-user_messages = []
-bot_messages = []
 
 def get_ai_response(prompt):
   message = client.beta.threads.messages.create(
