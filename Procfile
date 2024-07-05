@@ -1,0 +1,1 @@
+web: gunicorn --bind :$PORT app:web_socket_app

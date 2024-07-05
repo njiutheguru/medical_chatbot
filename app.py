@@ -1,13 +1,24 @@
-from flask import Flask, render_template, url_for
+import os
+from openai import OpenAI
 
-app = Flask(__name__)
+client = OpenAI(
+    api_key=os.environ.get("OPENAI_API_KEY"),
+    # base_url="https://api.aimlapi.com",
+)
 
-@app.route('/')
-def hello_world():
-    return render_template("index.html",
-                            company_name="ZoAfya")
+response = client.chat.completions.create(
+    model="gpt-3.5-turbo-1106",
+    messages=[
+        {
+            "role": "system",
+            "content": "You are a medical and a health assistnant who knows only about medicine and health",
+        },
+        {
+            "role": "user",
+            "content": "Tell me, what is the function of the placenta?"
+        },
+    ],
+)
 
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
+message = response.choices[0].message.content
+print(f"Assistant: {message}")

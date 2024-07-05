@@ -1,10 +1,10 @@
 from flask import Flask, request, render_template, jsonify
 import markdown
+import os
 
 app = Flask(__name__)
 
-# Simulated chatbot function
-OPENAI_API_KEY ="sk-proj-BuVbw1GltfxFI7gbB2wpT3BlbkFJyr1lnzzGNqDs05BJHdsi"
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 from openai import OpenAI
 client = OpenAI(api_key= OPENAI_API_KEY)
 assistant = client.beta.assistants.create(
