@@ -15,8 +15,13 @@
         }
         h1 {
             text-align: center;
-            margin: 10px 0;
+            margin: 2px 0;
             }
+        .description {
+            font-size: 16px;
+            text-align: center;
+            font-style: italic;
+        }
 
         #chat-history {
             height: calc(100vh - 220px);
@@ -30,7 +35,7 @@
         .user-message {
             background-color: #e6f2ff;
             float: right;
-            padding: 5px;
+            padding: 10px;
             margin: 5px;
             border-radius: 10px;
             clear: both;
@@ -38,8 +43,8 @@
         .bot-message {
             background-color: #f0f0f0;
             float: left;
-            padding: 5px;
-            margin: 5px;
+            padding: 10px;
+            margin: 10px;
             border-radius: 10px;
             clear: both;
         }
@@ -57,7 +62,7 @@
             flex-grow: 1;
             padding: 7px;
             margin-right: 10px;
-            width: 100%;
+            width: calc(100% - 100px);
             /* height: auto; */
             /* max-height: 500px; */
             resize: none;
@@ -79,15 +84,74 @@
             font-weight: bold;
         }
 
+        @media only screen and (max-width: 768px) {
+        #user-input {
+            width: calc(100% - 80px); /* Adjust width for smaller screens */
+        }
+        body {
+            margin: 5px;
+            padding: 8px;
+        }
+        .bot-message {
+            padding: 5px; /* Reduce padding in bot messages */
+            margin: 5px; /* Adjust margin in bot messages */
+        }
+        .description {
+            font-size: 12px;
+        }
+
+        #chat-history {
+            width: 100%;
+            height: calc(100vh - 250px); /* Adjust chat history height */
+            margin-bottom: 20px;
+        }
+    }
+
+
+    @media only screen and (min-width: 769px) and (max-width: 1024px) {
+        #chat-history {
+            height: calc(100vh - 250px); /* Adjust chat history height for iPads */
+            margin-bottom:auto;
+        }
+
+        .user-message {
+            padding: 8px; /* Adjust padding in user messages for iPads */
+            margin: 8px; /* Adjust margin in user messages for iPads */
+        }
+
+        .bot-message {
+            padding: 10px; /* Adjust padding in bot messages for iPads */
+            margin: 10px; /* Adjust margin in bot messages for iPads */
+        }
+
+        #user-input {
+            padding: 10px; /* Adjust padding for input field on iPads */
+            margin-right: 15px; /* Adjust margin for input field on iPads */
+        }
+
+        button {
+            padding: 15px 25px; /* Adjust padding for buttons on iPads */
+        }
+    }
+
+    /* @media only screen and (max-width: 400px) {
+        #chat-history {
+            height: calc(100vh - 160px); /* Further adjust chat history height for smaller screens 
+        }
+    } */
+
     </style>
 </head>
 <body>
     <h1>Chat with Zoe</h1>
+    <div class="description">
+        <p>Hi. I’m Zoe, an AI-powered assistant, here to chat with you concerning medicine, general health and mental health.</p>
+    </div>
     <div id="chat-history"></div>
-    <div class="input-bar fixed-bottom m-3">
+    <div class="input-bar fixed-bottom m-4">
         <div id="loading">Loading...</div>
         <form id="chat-form">
-            <input type="text" id="user-input" name="user_input" required placeholder="Type your message...">
+            <input type="text" id="user-input" name="user_input" required placeholder="e.g I have fever, cold, and feeling tired?">
             <button type="submit">Send</button>
         </form>
     </div>
